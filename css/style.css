@@ -1,8 +1,6 @@
+/* step 1
+adds animations for the logo in header */
 
-/* Step #2:
-    Edit the body element to use the Poppins font (using Google fonts)
- with serif as a backup.  It should also use the image “concrete_seamless.png”
- as a background-image with a backup color of #f1f1f1. */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -11,6 +9,12 @@
         opacity: 1;
     }
 }
+
+/* Step #2:
+    Edit the body element to use the Poppins font (using Google fonts)
+ with serif as a backup.  It should also use the image “concrete_seamless.png”
+ as a background-image with a backup color of #f1f1f1. */
+
 
 header img {
     animation: fadeIn 2s;
@@ -33,6 +37,7 @@ a:link, a:visited {
 This switches the header for all instances to use flex */
 header {
     display:flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
@@ -85,7 +90,7 @@ This changes the card class to use flex at 450px.  */
     }
 }
 
-/* step 9:
+/* step 9/10:
 This changes the gallery class to use flex. Edits our gallery styles */
 
 .gallery img {
@@ -99,7 +104,9 @@ This changes the gallery class to use flex. Edits our gallery styles */
     flex-wrap: wrap;
     justify-content: center;
 }
-
+/* step 11 -13
+edits headers  and nav links using flex properties.
+This also modifies pricing and Card classes to be spaced properly using flex */
 @media screen and (min-width: 900px){
     header {
         flex-direction: row;
@@ -113,25 +120,39 @@ This changes the gallery class to use flex. Edits our gallery styles */
         display: flex;
         justify-content: space-evenly;
         align-items: center;
-        flex-basis: 275
+        flex-basis: 275px;
     }
-    
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        flex-basis: 325px;
+    }
 }
 
-
+/* step 13
+Locks header during scrolling, padding to prevent content coverage */
 .header1 {
     position: fixed;
     width: 100%;
     padding-top: 10px;
 }
 
+main {
+    padding-top: 200px;
+}
 
-@media screen {prefers-reduced-motion: reduce}{
+/*step 14
+Turns off screen animations*/
+@media screen and (prefers-reduced-motion: reduce) {
     header img {
         animation: none;
     }
 }
 
+/* step 15
+This customizes the print view of the page.  */
 @media print {
 
     body {
@@ -139,21 +160,27 @@ This changes the gallery class to use flex. Edits our gallery styles */
         background-image: none;
     }
 
-    .nav_links, nav {
+    .nav_links {
+        display: flex;
         flex-direction: row;
-        justify-content: space-between
+        column-gap: 150px;
+        justify-content: space-around;
     }
 
-.pricing {
+    
+
+    .pricing {
     align-items: flex-end;
-}
+    }
+
 
     .card {
-        display: block;
-}
-
-    .card {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        flex-basis: 325px;
         border: 2px solid #45ADAD;
+        border-radius: 55px;
     }
 
     .gallery {
